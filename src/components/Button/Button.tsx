@@ -5,15 +5,13 @@ function Button({
   type = "button",
   name,
   onClick,
-  isDeleteVariant = false,
-  disabled = false,
+  isCardButton = false,
 }: ButtonProps) {
   return (
     <ButtonComponent
-      $isDeleteVariant={isDeleteVariant}
+      $isCardButton={isCardButton}
       onClick={onClick}
       type={type}
-      disabled={disabled}
     >
       {name}
     </ButtonComponent>
