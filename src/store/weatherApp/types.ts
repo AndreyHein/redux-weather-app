@@ -12,7 +12,7 @@ export interface WeatherData {
 }
 
 export interface WeatherInitialState {
-  userData: WeatherData[]
+  data: WeatherData[]
   error: undefined | string
   isLoading: boolean
   isModalOpened: boolean
