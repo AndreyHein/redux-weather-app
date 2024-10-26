@@ -1,0 +1,1 @@
+export { default as AppImg } from "./pic2.jpg";
