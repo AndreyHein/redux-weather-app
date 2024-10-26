@@ -6,6 +6,5 @@ export interface ButtonProps {
   type?: ButtonTypes;
   name: string;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
-  isDeleteVariant?: boolean;
-  disabled?: boolean;
+  isCardButton?: boolean;
 }

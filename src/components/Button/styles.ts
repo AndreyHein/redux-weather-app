@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { colors } from "styles/colors";
 
 interface ButtonComponentStyleProps {
-  $isDeleteVariant: boolean;
+  $isCardButton: boolean;
 }
 
 export const ButtonComponent = styled.button<ButtonComponentStyleProps>`
@@ -11,20 +11,17 @@ export const ButtonComponent = styled.button<ButtonComponentStyleProps>`
   width: 100%;
   height: 70px;
   border: none;
-  background-color: ${({ $isDeleteVariant, disabled }) => {
-    if (disabled) {
-      return colors.GREY;
-    } else {
-      if ($isDeleteVariant) {
-        return colors.ERROR;
+  background-color: ${({ $isCardButton }) => {
+      if ($isCardButton) {
+        return colors.TRANSPARENT;
       } else {
         return colors.PRIMARY_BLUE;
       }
     }
-  }};
-  color: white;
+  };
+  color: ${colors.WHITE};
   font-size: 20px;
   font-weight: bold;
-  border-radius: 4px;
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  border-radius: 50px;
+  cursor: pointer;
 `;
