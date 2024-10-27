@@ -4,7 +4,7 @@ import { WEATHER_APP_ROUTES } from "constants/routes"
 
 import Layout from "./components/Layout/Layout"
 import Home from "./pages/Home"
-import Weathers from "pages/Weathers"
+import Weathers from "./pages/Weathers"
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
           element={<Home />}
         />
               <Route
-          path={WEATHER_APP_ROUTES.WEATHER_CARDS}
+          path={WEATHER_APP_ROUTES.WEATHERS}
           element={<Weathers />}
         />
       </Routes>
