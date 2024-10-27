@@ -1,4 +1,4 @@
-import { PageWrapper, SearchContainer, CardContainer } from "./styles"
+import { PageWrapper, SearchContainer, CardContainer, ButtonContainer, InputContainer } from "./styles"
 import { useNavigate } from "react-router-dom"
 
 import { useAppDispatch, useAppSelector } from "store/hooks"
@@ -33,6 +33,7 @@ function Home() {
   return (
     <PageWrapper>
       <SearchContainer>
+        <InputContainer>
         <Input
           value={inputValue}
           onChange={onChangeValue}
@@ -41,7 +42,10 @@ function Home() {
           type="text"
           placeholder="Enter city name"
         />
+        </InputContainer>
+        <ButtonContainer>
         <Button type="submit" name="Search" onClick={getWeatherData}/>
+        </ButtonContainer>
       </SearchContainer>
       <CardContainer>
         <Card CityWeather={dataObj} isHomePage/>

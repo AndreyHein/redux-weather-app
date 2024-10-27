@@ -9,54 +9,77 @@ export const PageWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 20px;
+
   box-sizing: border-box;
 `
 
 export const CardContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+  padding-left: 30px;
+  justify-content: left;
   width: 100%;
-  max-width: 1200px;
   box-sizing: border-box;
 `
 
 export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 470px;
-  height: fit-content;
-  border: 1px solid #000000;
-  padding: 40px;
-  border-radius: 8px;
-  background-color: ${colors.WHITE};
-  gap: 20px;
-  margin: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 710px;
+  height: 250px;
+  border-radius: 20px;
+  background: linear-gradient(133.66deg, rgba(47, 72, 111, 0.62) 5.78%, rgba(11, 27, 52, 0.62) 96.58%);
   box-sizing: border-box;
+  backdrop-filter: blur(2px);
 `
 
-export const CardItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  font-size: 24px;
-  padding-top: 10px;
-  color: ${colors.PRIMARY};
-  text-align: left;
+export const CardCity = styled.p`
+  padding-left: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: ${colors.WHITE};
+  `
+
+export const CardDeegrees = styled.p`
+  font-size: 57px;
+  font-weight: 500;
+  line-height: 69px;
+  color: ${colors.WHITE};
 `
 
 export const CardImg = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 100px;
+  height: 100px;
+  
 `
 
-export const CardLabel = styled.span`
-  font-size: 16px;
-  font-weight: normal;
-  color: ${colors.PRIMARY};
+export const CardImgContainer = styled.div`
+ width: fit-content;
+ display: flex;
+ flex: 1;
+ justify-content: right;
+ padding-right: 150px;
+ 
+`
+
+export const CardItemContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+`
+export const ButtonControl = styled.div`
+  width: 100%;
+  max-width: 470px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  padding-top: 20px;
+  box-sizing: border-box;
+  column-gap: 50px;
 `
 
 export const WeathersNotFound = styled.p`
@@ -65,14 +88,6 @@ export const WeathersNotFound = styled.p`
   color: white;
 `
 
-export const ButtonControl = styled.div`
-  width: 100%;
-  max-width: 470px;
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  box-sizing: border-box;
-`
 export const SuccessModalWrapper = styled.div`
   display: flex;
   flex: 1;
