@@ -63,8 +63,7 @@ export const HeaderLink = styled(NavLink)`
   margin-right: 85px;
 
   &.active {
-    font-weight: 700;
-    text-decoration: underline;
+    font-weight: bold;
   }
 `
 

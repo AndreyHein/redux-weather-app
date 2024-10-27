@@ -12,6 +12,7 @@ export interface WeatherData {
 }
 
 export interface WeatherInitialState {
+  inputValue: string
   dataObj: WeatherData | undefined
   data: WeatherData[]
   error: undefined | string

@@ -10,6 +10,7 @@ function Input({
   name,
   type = "text",
   placeholder,
+  disabled = false,
   error = undefined,
   value,
   onChange,
@@ -21,6 +22,7 @@ function Input({
         name={name}
         type={type}
         placeholder={placeholder}
+        disabled = {disabled}
         $error={error}
         value={value}
         onChange={onChange}

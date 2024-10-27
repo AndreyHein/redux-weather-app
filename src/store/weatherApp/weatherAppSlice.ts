@@ -6,6 +6,7 @@ import { PayloadAction } from "@reduxjs/toolkit"
 import { WeatherInitialState, WeatherData } from "./types"
 
 const weatherDataInitialState: WeatherInitialState = {
+  inputValue: "",
   dataObj: undefined,
   data: [],
   error: undefined,
@@ -52,6 +53,11 @@ export const weatherSlice = createAppSlice({
         },
       },
     ),
+    getCityName: create.reducer(
+        (state: WeatherInitialState, action: PayloadAction<string>) => {
+          state.inputValue = action.payload
+        },
+      ),
     saveWeatherData: create.reducer((state: WeatherInitialState) => {
       state.data = state.dataObj ? [...state.data, state.dataObj] : state.data
     }),

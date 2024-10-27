@@ -48,6 +48,11 @@ export const CardItem = styled.div`
   text-align: left;
 `
 
+export const CardImg = styled.img`
+  width: 100%;
+  height: 100%;
+`
+
 export const CardLabel = styled.span`
   font-size: 16px;
   font-weight: normal;
