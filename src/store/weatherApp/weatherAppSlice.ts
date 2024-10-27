@@ -1,9 +1,12 @@
+import { v4 } from "uuid"
+
 import { createAppSlice } from "store/createAppSlice"
 import { PayloadAction } from "@reduxjs/toolkit"
 
 import { WeatherInitialState, WeatherData } from "./types"
 
 const weatherDataInitialState: WeatherInitialState = {
+  dataObj: undefined,
   data: [],
   error: undefined,
   isLoading: false,
@@ -30,11 +33,28 @@ export const weatherSlice = createAppSlice({
         }
       },
       {
-        pending: () => {},
-        fulfilled: () => {},
-        rejected: () => {},
+        pending: (state: WeatherInitialState) => {
+          state.error = undefined
+          state.isLoading = true
+        },
+        fulfilled: (state: WeatherInitialState, action) => {
+          state.isLoading = false
+          state.dataObj = {
+            id: v4(),
+            name: action.payload.name,
+            temp: action.payload.main["temp"],
+            icon: action.payload.weather[0].icon,
+          }
+        },
+        rejected: (state: WeatherInitialState) => {
+          state.isLoading = false
+          state.error = "Some Network Error"
+        },
       },
     ),
+    saveWeatherData: create.reducer((state: WeatherInitialState) => {
+      state.data = state.dataObj ? [...state.data, state.dataObj] : state.data
+    }),
     delAllCard: create.reducer(() => weatherDataInitialState),
     delCardById: create.reducer(
       (state: WeatherInitialState, action: PayloadAction<string>) => {
