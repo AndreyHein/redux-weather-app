@@ -1,9 +1,5 @@
-import { InputProps } from "./types";
-import {
-  InputWrapper,
-  InputComponent,
-  ErrorContainer,
-} from "./styles";
+import { InputProps } from "./types"
+import { InputWrapper, InputComponent, ErrorContainer } from "./styles"
 
 function Input({
   id,
@@ -22,14 +18,14 @@ function Input({
         name={name}
         type={type}
         placeholder={placeholder}
-        disabled = {disabled}
+        disabled={disabled}
         $error={error}
         value={value}
         onChange={onChange}
       />
       <ErrorContainer>{error}</ErrorContainer>
     </InputWrapper>
-  );
+  )
 }
 
-export default Input;
+export default Input

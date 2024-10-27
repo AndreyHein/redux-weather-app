@@ -1,56 +1,59 @@
-import { useEffect } from "react";
-import { useAppDispatch } from "store/hooks";
-import { WeatherData } from "store/weatherApp/types";
-import Button from "components/Button/Button";
-import { CardProps } from "./types";
+import { useEffect } from "react"
+import Button from "components/Button/Button"
+import { CardProps } from "./types"
 import {
   PageWrapper,
   WeathersNotFound,
   ButtonControl,
   CardWrapper,
   CardCity,
-  CardDeegrees,
+  CardTemp,
   CardImg,
   CardItemContainer,
   CardContainer,
   CardImgContainer,
-} from "./styles";
+} from "./styles"
 
-function Card({ CityWeather, isHomePage, error }: CardProps) {
-  const urlIcon: string = `http://openweathermap.org/img/w/${CityWeather?.icon}.png`;
-  const celTemp: string = (Number(CityWeather?.temp) - 273.15).toFixed(0);
-  const dispatch = useAppDispatch();
+function Card({ CityWeather, isHomePage, error, onDelete, onSave }: CardProps) {
+  const urlIcon: string = `http://openweathermap.org/img/w/${CityWeather?.icon}.png`
+  const celTemp: string = (Number(CityWeather?.temp) - 273.15).toFixed(0)
 
   useEffect(() => {
     if (error) {
-      alert(error);
+      alert(error)
     }
-  }, [error]);
+  }, [error])
 
   return (
     <PageWrapper>
       {CityWeather ? (
         <CardWrapper>
           <CardContainer>
-          <CardItemContainer>
-          <CardDeegrees>{celTemp}°</CardDeegrees>
-          <CardCity>{CityWeather.name}</CardCity>
-          </CardItemContainer>
-          <CardImgContainer>
-          <CardImg src={urlIcon}/>
-          <CardImg src={urlIcon}/>
-          <CardImg src={urlIcon}/>
-          </CardImgContainer>
+            <CardItemContainer>
+              <CardTemp>{celTemp}°</CardTemp>
+              <CardCity>{CityWeather.name}</CardCity>
+            </CardItemContainer>
+            <CardImgContainer>
+              <CardImg src={urlIcon} />
+              <CardImg src={urlIcon} />
+              <CardImg src={urlIcon} />
+            </CardImgContainer>
           </CardContainer>
           <ButtonControl>
-          {isHomePage ? (
-            <Button name="Delete" onClick={() => console.log("Delete weather from Home parent")} isCardButton />
-          ) : (
-            <Button name="Delete" onClick={() => console.log("Delete weather from Weathers parent")} isCardButton />
-          )}
-          {isHomePage && (
-            <Button name="Save" onClick={() => console.log("Save weather from parent") } isCardButton />
-          )}
+              <Button
+                name="Delete"
+                onClick={
+                  onDelete
+                }
+                isCardButton
+              />
+            {isHomePage && (
+              <Button
+                name="Save"
+                onClick={onSave}
+                isCardButton
+              />
+            )}
           </ButtonControl>
         </CardWrapper>
       ) : error ? (
@@ -59,7 +62,7 @@ function Card({ CityWeather, isHomePage, error }: CardProps) {
         <WeathersNotFound></WeathersNotFound>
       )}
     </PageWrapper>
-  );
+  )
 }
 
-export default Card;
+export default Card

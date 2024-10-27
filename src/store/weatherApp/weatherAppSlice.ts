@@ -61,6 +61,9 @@ export const weatherSlice = createAppSlice({
     saveWeatherData: create.reducer((state: WeatherInitialState) => {
       state.data = state.dataObj ? [...state.data, state.dataObj] : state.data
     }),
+    delObjData: create.reducer((state: WeatherInitialState) => {
+      state.dataObj = undefined
+    }),
     delAllCard: create.reducer(() => weatherDataInitialState),
     delCardById: create.reducer(
       (state: WeatherInitialState, action: PayloadAction<string>) => {
