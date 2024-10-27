@@ -54,7 +54,7 @@ export const CardLabel = styled.span`
   color: ${colors.PRIMARY};
 `
 
-export const UsersNotFound = styled.p`
+export const WeathersNotFound = styled.p`
   font-size: 30px;
   font-weight: bold;
   color: white;

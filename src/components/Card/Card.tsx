@@ -1,85 +1,42 @@
 import { useEffect } from "react"
 
 import { useAppDispatch, useAppSelector } from "store/hooks"
-import { employeeSliceAction, employeeSliceSelectors } from "store/redux/employeeApp/employeeAppSlice"
-import { UserData } from "pages/EmployeeApp/types"
-import Button from "components/Button/Button"
+import { WeatherData } from "store/weatherApp/types"
+import { weatherSliceAction, weatherSliceSelectors } from "store/weatherApp/weatherAppSlice"
 
+import Button from "components/Button/Button"
+import { CardProps } from "./types"
 import {
-  CardLabel,
   CardContainer,
-  CardItem,
   PageWrapper,
-  UsersNotFound,
+  WeathersNotFound,
   ButtonControl,
   CardWrapper,
+  CardItem
 } from "./styles"
 
-function EmployeeCard() {
-  const dispatch = useAppDispatch()
-
-  const { userData, error } = useAppSelector(
-    employeeSliceSelectors.employees,
-  )
-
-  const deleteAllUsers = () => {
-    dispatch(employeeSliceAction.deleteAllUsers())
-  }
-
-  const userCards = userData.map((user: UserData) => {
-    const deleteUser = () => {
-      dispatch(employeeSliceAction.deleteUser(user.id))
-    }
-
-    return (
-      <CardWrapper key={user.id}>
-        <CardLabel>
-          Name:
-          <CardItem>{user.name}</CardItem>
-        </CardLabel>
-        <CardLabel>
-          Surname:
-          <CardItem>{user.surname}</CardItem>
-        </CardLabel>
-        <CardLabel>
-          Age:
-          <CardItem>{user.age}</CardItem>
-        </CardLabel>
-        <CardLabel>
-          Job Position:
-          <CardItem>{user.jobPosition}</CardItem>
-        </CardLabel>
-        <Button name="Delete" onClick={deleteUser} isDeleteVariant />
-      </CardWrapper>
-    )
-  })
-
-  useEffect(() => {
-    if (error) {
-      alert(error)
-    }
-  }, [error])
-
+function Card({ CityWeather, isHomePage, error }: CardProps){
   return (
     <PageWrapper>
-      {userData.length > 0 ? (
-        <>
-          <CardContainer>
-            {userCards}
-          </CardContainer>
-          <ButtonControl>
-            <Button
-              name="Remove All Employees"
-              onClick={deleteAllUsers}
-              isDeleteVariant
-            />
-          </ButtonControl>
-        </>
-      ) : (
-        <UsersNotFound>Users not found</UsersNotFound>
-      )}
-    </PageWrapper>
-  )
+    {CityWeather ? (
+      <CardWrapper>
+          <CardItem>{CityWeather.name}</CardItem>
+          <CardItem>{CityWeather.temp}°C</CardItem>
+          <CardItem>{CityWeather.icon}</CardItem>
+        <ButtonControl>
+        <Button name="Delete" onClick={() => console.log("Delete weather from parent")} isCardButton />
+        </ButtonControl>
+        {isHomePage && (
+          <Button name="Save" onClick={() => console.log("Save weather from parent") } isCardButton />
+        )}
+      </CardWrapper>
+    ) : error ? (
+      <WeathersNotFound>{error}</WeathersNotFound>
+    ) : (
+      <WeathersNotFound>Cards not found</WeathersNotFound>
+    )}
+  </PageWrapper>
+);
 }
 
-export default EmployeeCard
+export default Card
