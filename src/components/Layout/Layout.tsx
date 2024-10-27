@@ -22,9 +22,7 @@ function Layout({ children }: LayoutProps) {
       <AppHeader>
         <AppTitle onClick={goToHomePage}>Weather App</AppTitle>
         <HeaderNav>
-          <HeaderLink to={WEATHER_APP_ROUTES.HOME}>
-            Home
-          </HeaderLink>
+          <HeaderLink to={WEATHER_APP_ROUTES.HOME}>Home</HeaderLink>
           <HeaderLink to={WEATHER_APP_ROUTES.WEATHERS}>Weathers</HeaderLink>
         </HeaderNav>
       </AppHeader>
