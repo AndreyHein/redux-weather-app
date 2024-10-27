@@ -54,33 +54,28 @@ export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  
 `;
 
 export const InputLabel = styled.label`
   font-size: 16px;
   color: hsl(0, 0%, 44%);
+
 `;
 
 export const InputComponent = styled.input<InputComponentStyleProps>`
   width: 100%;
   height: 50px;
-  border: ${({ $error, disabled }) => {
-    if (disabled) {
-      return `1px solid ${colors.GREY}`;
-    } else {
-      if ($error !== undefined) {
-        return `2px solid ${colors.ERROR}`;
-      } else {
-        return "1px solid #3f3f3f";
-      }
-    }
-  }};
+  border: 1px solid white;
   border-radius: 50px;
   padding: 12px;
   outline: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: ${colors.WHITE};
+  backdrop-filter: blur(4px);
 
   &::placeholder {
-    color: #6f6f6f;
+    color: ${colors.WHITE};
     font-size: 16px;
   }
 `;

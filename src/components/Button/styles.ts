@@ -9,8 +9,8 @@ interface ButtonComponentStyleProps {
 export const ButtonComponent = styled.button<ButtonComponentStyleProps>`
   outline: none;
   width: 100%;
-  height: 70px;
-  border: none;
+  height: 50px;
+  border: ${({ $isCardButton }) => ($isCardButton ? '1px solid white' : 'none')};
   background-color: ${({ $isCardButton }) => {
       if ($isCardButton) {
         return colors.TRANSPARENT;

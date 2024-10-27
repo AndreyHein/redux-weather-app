@@ -10,6 +10,7 @@ function GlobalStyles() {
     html {
       margin: 0;
       height: 100%;
+      font-family: 'Inter', sans-serif;
     }
 
     #root {
