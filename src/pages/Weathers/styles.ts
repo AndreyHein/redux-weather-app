@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from "@emotion/styled"
 
 export const PageWrapper = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ export const PageWrapper = styled.div`
   gap: 30px;
   overflow-y: auto;
   width: 100%;
-`;
+`
 
 export const CardContainer = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ export const CardContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
-`;
+`
 
 export const ButtonContainer = styled.div`
   width: 710px;
@@ -26,7 +26,7 @@ export const ButtonContainer = styled.div`
   justify-content: center;
   padding-top: 20px;
   box-sizing: border-box;
-`;
+`
 
 export const WeatherNotFound = styled.p`
   font-size: 30px;
@@ -34,4 +34,4 @@ export const WeatherNotFound = styled.p`
   color: white;
   text-align: center;
   margin-top: 40px;
-`;
+`
