@@ -15,11 +15,9 @@ export const LayoutWrapper = styled.div`
 `
 
 export const AppHeader = styled.header`
-position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  top:0;
   width: 100%;
   height: 80px;
   border-bottom: 1px solid #d2d2d2;
@@ -32,6 +30,10 @@ position: fixed;
       rgba(18, 45, 77, 0.5)
     ),
     linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+    
+    &:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  }
 `
 export const AppTitle = styled.span`
   font-size: 24px;
@@ -40,14 +42,8 @@ export const AppTitle = styled.span`
   margin-left: 85px;
   color: ${colors.WHITE};
   cursor: pointer;
+  
 `
-// export const HeaderLogo = styled.div`
-//   height: 100%;
-//   width: 80px;
-//   font-size: 24px;
-//   font-weight: 700;
-//   cursor: pointer;
-// `
 
 export const HeaderNav = styled.nav`
   display: flex;
@@ -63,6 +59,7 @@ export const HeaderLink = styled(NavLink)`
   line-height: 24.2px;
   color: ${colors.WHITE};
   margin-right: 85px;
+  border-radius: 20px;
 
   &.active {
     font-weight: bold;
@@ -70,11 +67,10 @@ export const HeaderLink = styled(NavLink)`
 `
 
 export const AppMain = styled.main`
-  overflow-y: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
-  padding-top: 70px;
+  padding: 40px;
   min-height: calc(100vh - 120px);
 `

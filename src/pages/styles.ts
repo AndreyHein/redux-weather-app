@@ -1,17 +1,15 @@
 import styled from "@emotion/styled"
 
 export const PageWrapper = styled.div`
-  overflow-y: auto;
   display: flex;
   flex: 1;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  padding: 20px;
+  padding: 50px;
   box-sizing: border-box;
   gap: 30px;
-  min-height: 200px;
-  max-height: calc(100vh - 90px);
+  overflow-y: auto;
+  width: 100%;
 `
 export const SearchContainer = styled.div`
   display: flex;
@@ -35,9 +33,17 @@ export const CardContainer = styled.div`
   justify-content: center;
   gap: 20px;
 `
+export const SearchButtonContainer = styled.div`
+  width: 210px;
+`
 export const ButtonContainer = styled.div`
   width: 710px;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  box-sizing: border-box;
 `
+
 export const WeatherNotFound = styled.p`
   font-size: 30px;
   font-weight: bold;
@@ -45,6 +51,7 @@ export const WeatherNotFound = styled.p`
   text-align: center;
   margin-top: 40px;
 `
+
 export const SuccessModalWrapper = styled.div`
   display: flex;
   flex: 1;

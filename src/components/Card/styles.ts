@@ -9,7 +9,6 @@ export const PageWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-
   box-sizing: border-box;
 `
 
@@ -31,6 +30,7 @@ export const CardWrapper = styled.div`
   width: 710px;
   height: 250px;
   border-radius: 20px;
+  margin-bottom: 30px;
   background: linear-gradient(
     133.66deg,
     rgba(47, 72, 111, 0.62) 5.78%,
@@ -38,28 +38,30 @@ export const CardWrapper = styled.div`
   );
   box-sizing: border-box;
   backdrop-filter: blur(2px);
+  &:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  }
+`
+export const CardItemContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
 `
 
 export const CardCity = styled.p`
-  padding-left: 8px;
+  padding-left: 7px;
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
   color: ${colors.WHITE};
 `
 
-export const CardDeegrees = styled.p`
+export const CardTemp = styled.p`
   font-size: 57px;
   font-weight: 500;
   line-height: 69px;
   color: ${colors.WHITE};
 `
-
-export const CardImg = styled.img`
-  width: 100px;
-  height: 100px;
-`
-
 export const CardImgContainer = styled.div`
   width: fit-content;
   display: flex;
@@ -68,25 +70,24 @@ export const CardImgContainer = styled.div`
   padding-right: 150px;
 `
 
-export const CardItemContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-left: 10px;
+export const CardImg = styled.img`
+  width: 100px;
+  height: 100px;
 `
+
 export const ButtonControl = styled.div`
   width: 100%;
-  max-width: 470px;
+  max-width: 450px;
+  min-width: 210px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
   padding-top: 20px;
   box-sizing: border-box;
-  column-gap: 50px;
+  column-gap: 100px;
 `
 
 export const WeathersNotFound = styled.p`
-  display: flex;
-  align-items: center;
   font-size: 30px;
   font-weight: bold;
   color: white;

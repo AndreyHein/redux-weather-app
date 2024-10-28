@@ -2,7 +2,7 @@ import {
   PageWrapper,
   SearchContainer,
   CardContainer,
-  ButtonContainer,
+  SearchButtonContainer,
   InputContainer,
 } from "./styles"
 import { useNavigate } from "react-router-dom"
@@ -33,9 +33,14 @@ function Home() {
   }
 
   const getWeatherData = () => {
+    if (!inputValue.trim()) {
+      alert("Please enter a city name")
+      return
+    }
     dispatch(
       weatherSliceAction.getWeatherData({ cityName: inputValue, appKey }),
     )
+    dispatch(weatherSliceAction.saveWeatherData())
   }
 
   const clearCardWeather = () => {
@@ -62,9 +67,9 @@ function Home() {
             placeholder="Enter city name"
           />
         </InputContainer>
-        <ButtonContainer>
+        <SearchButtonContainer>
           <Button type="submit" name="Search" onClick={getWeatherData} />
-        </ButtonContainer>
+        </SearchButtonContainer>
       </SearchContainer>
       {dataObj && (
         <CardContainer>

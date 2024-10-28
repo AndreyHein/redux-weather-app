@@ -1,21 +1,18 @@
-import { ButtonProps } from "./types";
-import { ButtonComponent } from "./styles";
+import { ButtonProps } from "./types"
+import { ButtonComponent } from "./styles"
 
 function Button({
   type = "button",
   name,
   onClick,
   isCardButton = false,
+  disabled,
 }: ButtonProps) {
   return (
-    <ButtonComponent
-      $isCardButton={isCardButton}
-      onClick={onClick}
-      type={type}
-    >
+    <ButtonComponent $isCardButton={isCardButton} disabled={disabled} onClick={onClick} type={type} >
       {name}
     </ButtonComponent>
-  );
+  )
 }
 
-export default Button;
+export default Button

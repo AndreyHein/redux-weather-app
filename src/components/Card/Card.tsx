@@ -6,7 +6,7 @@ import {
   ButtonControl,
   CardWrapper,
   CardCity,
-  CardDeegrees,
+  CardTemp,
   CardImg,
   CardItemContainer,
   CardContainer,
@@ -23,7 +23,7 @@ function Card({ CityWeather, isHomePage, error, onSave, onDelete }: CardProps) {
         <CardWrapper>
           <CardContainer>
             <CardItemContainer>
-              <CardDeegrees>{celTemp}°</CardDeegrees>
+              <CardTemp>{celTemp}°</CardTemp>
               <CardCity>{CityWeather.name}</CardCity>
             </CardItemContainer>
             <CardImgContainer>

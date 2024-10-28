@@ -11,6 +11,7 @@ export interface Colors {
   CARD: string;
   HEADER: string;
   TRANSPARENT: string;
+  SEARCH: string;
 }
 export const colors: Colors = {
   PRIMARY: "rgb(26, 35, 53)",
@@ -25,4 +26,5 @@ export const colors: Colors = {
   CARD: "linear-gradient(133.66deg, rgba(47, 72, 111, 0.62) 5.78%, rgba(11, 27, 52, 0.62) 96.58%)",
   HEADER: "linear-gradient(0deg, #122d4d80, #122d4d80), linear-gradient(0deg, #ffffff1a, #ffffff1a)",
   TRANSPARENT: "transparent",
-};
+  SEARCH: "rgba(54, 120, 180, 1)",
+}
