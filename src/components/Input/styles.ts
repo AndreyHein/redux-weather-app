@@ -25,12 +25,17 @@ export const InputComponent = styled.input<InputComponentStyleProps>`
   padding: 12px;
   outline: none;
   background-color: rgba(255, 255, 255, 0.1);
+  
   color: ${colors.WHITE};
   backdrop-filter: blur(4px);
 
   &::placeholder {
     color: ${colors.WHITE};
     font-size: 16px;
+  }
+
+  &:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
   }
 `
 

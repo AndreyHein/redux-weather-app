@@ -38,14 +38,8 @@ export const AppTitle = styled.span`
   margin-left: 85px;
   color: ${colors.WHITE};
   cursor: pointer;
+  
 `
-// export const HeaderLogo = styled.div`
-//   height: 100%;
-//   width: 80px;
-//   font-size: 24px;
-//   font-weight: 700;
-//   cursor: pointer;
-// `
 
 export const HeaderNav = styled.nav`
   display: flex;
@@ -61,6 +55,7 @@ export const HeaderLink = styled(NavLink)`
   line-height: 24.2px;
   color: ${colors.WHITE};
   margin-right: 85px;
+  border-radius: 20px;
 
   &.active {
     font-weight: bold;

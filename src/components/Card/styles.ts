@@ -38,6 +38,9 @@ export const CardWrapper = styled.div`
   );
   box-sizing: border-box;
   backdrop-filter: blur(2px);
+  &:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  }
 `
 export const CardItemContainer = styled.div`
   display: flex;
