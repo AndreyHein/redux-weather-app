@@ -44,26 +44,27 @@ function Weathers() {
   })
 
   useEffect(() => {
-    isModalOpened && (
-      <Modal closeModal={closeModal}>
-        <SuccessModalWrapper>
-          <ModalInfoContainer>
-            <ModalInfo>Your data has been saved successfully!!!</ModalInfo>
-            <ModalIcon
-              className="modal-icon"
-              src="https://w7.pngwing.com/pngs/442/715/png-transparent-check-mark-computer-icons-icon-design-cheque-successful-angle-logo-grass-thumbnail.png"
-              alt="Success Icon"
-            />
-          </ModalInfoContainer>
-          <Button name="Close Modal" onClick={closeModal} />
-        </SuccessModalWrapper>
-      </Modal>
-    )
-  }, [data])
+    closeModal()
+  }, [])
 
   return (
     <PageWrapper>
-      {data.length > 0 ? (
+      {isModalOpened && (
+        <Modal closeModal={closeModal}>
+          <SuccessModalWrapper>
+            <ModalInfoContainer>
+              <ModalInfo>Your data has been saved successfully!!!</ModalInfo>
+              <ModalIcon
+                className="modal-icon"
+                src="https://w7.pngwing.com/pngs/442/715/png-transparent-check-mark-computer-icons-icon-design-cheque-successful-angle-logo-grass-thumbnail.png"
+                alt="Success Icon"
+              />
+            </ModalInfoContainer>
+            <Button name="Close Modal" onClick={closeModal} />
+          </SuccessModalWrapper>
+        </Modal>
+      )}
+      {data.length > 0 && isModalOpened !==true ? (
         <>
           {weatherCards}
           <ButtonContainer>
@@ -71,7 +72,7 @@ function Weathers() {
           </ButtonContainer>
         </>
       ) : (
-        <WeatherNotFound>{error}</WeatherNotFound>
+        <WeatherNotFound>Card not found</WeatherNotFound>
       )}
     </PageWrapper>
   )

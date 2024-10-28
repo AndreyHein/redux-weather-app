@@ -10,6 +10,7 @@ export const ButtonComponent = styled.button<ButtonComponentStyleProps>`
   outline: none;
   width: 100%;
   height: 50px;
+  max-width: ${({ $isCardButton }) => ($isCardButton ? "210px" : "710px")};
   border: ${({ $isCardButton }) =>
     $isCardButton ? "1px solid white" : "none"};
   background-color: ${({ $isCardButton }) =>

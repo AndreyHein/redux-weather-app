@@ -46,6 +46,7 @@ export const weatherSlice = createAppSlice({
             temp: action.payload.main["temp"],
             icon: action.payload.weather[0].icon,
           }
+          state.inputValue = ""
         },
         rejected: (state: WeatherInitialState, action) => {
           state.isLoading = false

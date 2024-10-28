@@ -36,7 +36,7 @@ export const CardContainer = styled.div`
   gap: 20px;
 `
 export const ButtonContainer = styled.div`
-  width: 210px;
+  width: 710px;
 `
 export const WeatherNotFound = styled.p`
   font-size: 30px;
