@@ -77,9 +77,12 @@ function Home() {
         </CardContainer>
       )}
       {error && (
-        <CardContainer>
-          <Card error={error} onDelete={clearErrorCard} />
-        </CardContainer>
+        <>
+          {clearCardWeather()}
+          <CardContainer>
+            <Card error={error} onDelete={clearErrorCard} />
+          </CardContainer>
+        </>
       )}
     </PageWrapper>
   )

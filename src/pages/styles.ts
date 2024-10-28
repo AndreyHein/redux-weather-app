@@ -45,3 +45,29 @@ export const WeatherNotFound = styled.p`
   text-align: center;
   margin-top: 40px;
 `
+export const SuccessModalWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+`;
+
+export const ModalInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+`;
+
+export const ModalInfo = styled.div`
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  color: purple;
+`;
+
+export const ModalIcon = styled.img`
+  width: 200px;
+  height: 200px;
+`;

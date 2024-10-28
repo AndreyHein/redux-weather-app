@@ -7,16 +7,25 @@ import {
 } from "store/weatherApp/weatherAppSlice"
 import Button from "components/Button/Button"
 import Card from "components/Card/Card"
+import Modal from "components/Modal/Modal"
 import {
   PageWrapper,
   CardContainer,
   ButtonContainer,
   WeatherNotFound,
+  SuccessModalWrapper,
+  ModalInfoContainer,
+  ModalInfo,
+  ModalIcon,
 } from "./styles"
 
 function Weathers() {
   const dispatch = useAppDispatch()
-  const { data, error } = useAppSelector(weatherSliceSelectors.weathers)
+  const { data, isModalOpened } = useAppSelector(weatherSliceSelectors.weathers)
+
+  const closeModal = () => {
+    dispatch(weatherSliceAction.closeModal())
+  }
 
   const deleteAllCards = () => {
     dispatch(weatherSliceAction.delAllCard())
@@ -35,10 +44,22 @@ function Weathers() {
   })
 
   useEffect(() => {
-    if (error) {
-      alert(error)
-    }
-  }, [error])
+    isModalOpened && (
+      <Modal closeModal={closeModal}>
+        <SuccessModalWrapper>
+          <ModalInfoContainer>
+            <ModalInfo>Your data has been saved successfully!!!</ModalInfo>
+            <ModalIcon
+              className="modal-icon"
+              src="https://w7.pngwing.com/pngs/442/715/png-transparent-check-mark-computer-icons-icon-design-cheque-successful-angle-logo-grass-thumbnail.png"
+              alt="Success Icon"
+            />
+          </ModalInfoContainer>
+          <Button name="Close Modal" onClick={closeModal} />
+        </SuccessModalWrapper>
+      </Modal>
+    )
+  }, [data])
 
   return (
     <PageWrapper>

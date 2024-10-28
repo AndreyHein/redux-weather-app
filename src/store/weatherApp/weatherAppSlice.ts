@@ -62,21 +62,33 @@ export const weatherSlice = createAppSlice({
       state.data = state.dataObj ? [...state.data, state.dataObj] : state.data
       state.dataObj = undefined
       state.inputValue = ""
+      state.isModalOpened = true
     }),
     delError: create.reducer((state: WeatherInitialState) => {
       state.error = undefined
+      state.isModalOpened = true
     }),
     delObjData: create.reducer((state: WeatherInitialState) => {
       state.dataObj = undefined
+      state.isModalOpened = true
     }),
-    delAllCard: create.reducer(() => weatherDataInitialState),
+    delAllCard: create.reducer(() => {
+      return {
+        ...weatherDataInitialState,
+        isModalOpened: true,
+      }
+    }),
     delCardById: create.reducer(
       (state: WeatherInitialState, action: PayloadAction<string>) => {
         state.data = [...state.data].filter(
           (card: WeatherData) => card.id !== action.payload,
         )
+        state.isModalOpened = true
       },
     ),
+    closeModal: create.reducer((state: WeatherInitialState) => {
+      state.isModalOpened = false
+    }),
   }),
   selectors: {
     weathers: (state: WeatherInitialState) => state,
