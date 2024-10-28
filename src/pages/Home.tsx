@@ -1,15 +1,21 @@
+import { useEffect } from "react"
+
 import {
   PageWrapper,
   SearchContainer,
   CardContainer,
   SearchButtonContainer,
   InputContainer,
+  WeathersNotFound,
+  SuccessModalWrapper,
+  ModalInfoContainer,
+  ModalInfo,
 } from "./styles"
-import { useNavigate } from "react-router-dom"
 
 import { useAppDispatch, useAppSelector } from "store/hooks"
 import { ChangeEvent } from "react"
 
+import Modal from "components/Modal/Modal"
 import Input from "components/Input/Input"
 import Button from "components/Button/Button"
 import Card from "components/Card/Card"
@@ -17,15 +23,14 @@ import {
   weatherSliceAction,
   weatherSliceSelectors,
 } from "store/weatherApp/weatherAppSlice"
+import { boolean } from "yup"
 
 function Home() {
-  const navigate = useNavigate()
   const appKey: string = "42f58ab4a7b3a4d34d19463542ce3b93"
 
   const dispatch = useAppDispatch()
-  const { inputValue, dataObj, error } = useAppSelector(
-    weatherSliceSelectors.weathers,
-  )
+  const { inputValue, dataObj, error, isLoading, isModalOpened, messageModal } =
+    useAppSelector(weatherSliceSelectors.weathers)
 
   const onChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
     console.log("Input value:", event.target.value)
@@ -40,7 +45,10 @@ function Home() {
     dispatch(
       weatherSliceAction.getWeatherData({ cityName: inputValue, appKey }),
     )
-    dispatch(weatherSliceAction.saveWeatherData())
+  }
+
+  const closeModal = () => {
+    dispatch(weatherSliceAction.closeModal())
   }
 
   const clearCardWeather = () => {
@@ -54,6 +62,18 @@ function Home() {
   const saveCardWeather = () => {
     dispatch(weatherSliceAction.saveWeatherData())
   }
+
+  useEffect(() => {
+    closeModal()
+  }, [])
+
+  useEffect(() => {
+    if (error) {
+      clearCardWeather()
+      closeModal()
+    }
+  }, [error])
+
   return (
     <PageWrapper>
       <SearchContainer>
@@ -68,26 +88,41 @@ function Home() {
           />
         </InputContainer>
         <SearchButtonContainer>
-          <Button type="submit" name="Search" onClick={getWeatherData} />
+          <Button
+            type="submit"
+            name="Search"
+            onClick={getWeatherData}
+            disabled={isLoading}
+          />
         </SearchButtonContainer>
       </SearchContainer>
-      {dataObj && (
-        <CardContainer>
-          <Card
-            CityWeather={dataObj}
-            isHomePage
-            onDelete={clearCardWeather}
-            onSave={saveCardWeather}
-          />
-        </CardContainer>
-      )}
-      {error && (
+
+      {!isModalOpened && (
         <>
-          {clearCardWeather()}
-          <CardContainer>
-            <Card error={error} onDelete={clearErrorCard} />
-          </CardContainer>
+          {dataObj ? (
+            <CardContainer>
+              <Card
+                CityWeather={dataObj}
+                isHomePage
+                onDelete={clearCardWeather}
+                onSave={saveCardWeather}
+              />
+            </CardContainer>
+          ) : (
+            error && <Card error={error} onDelete={clearErrorCard} />
+          )}
         </>
+      )}
+
+      {isModalOpened && (
+        <Modal closeModal={closeModal}>
+          <SuccessModalWrapper>
+            <ModalInfoContainer>
+              <ModalInfo>{messageModal}</ModalInfo>
+              <Button name="Close Modal" onClick={closeModal} isCardButton />
+            </ModalInfoContainer>
+          </SuccessModalWrapper>
+        </Modal>
       )}
     </PageWrapper>
   )

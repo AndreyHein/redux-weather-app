@@ -82,35 +82,28 @@ export const ButtonControl = styled.div`
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 30px;
   box-sizing: border-box;
   column-gap: 100px;
 `
 
 export const WeathersNotFound = styled.p`
-  font-size: 30px;
-  font-weight: bold;
-  color: white;
-`
-
-export const SuccessModalWrapper = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 40px;
-`
-
-export const ModalInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 30px;
-`
-
-export const ModalInfo = styled.div`
-  text-align: center;
-  font-size: 40px;
+  width: 710px;
+  height: 250px;
+  border-radius: 20px;
+  font-size: 50px;
   font-weight: bold;
-  color: purple;
+  text-align: center;
+  color: ${colors.ERROR};
+  background: linear-gradient(
+    133.66deg,
+    rgba(47, 72, 111, 0.62) 5.78%,
+    rgba(11, 27, 52, 0.62) 96.58%
+  );
+  box-sizing: border-box;
+  backdrop-filter: blur(2px);
 `

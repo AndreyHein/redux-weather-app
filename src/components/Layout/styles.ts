@@ -18,6 +18,8 @@ export const AppHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  z-index: 10;
   width: 100%;
   height: 80px;
   border-bottom: 1px solid #d2d2d2;
@@ -69,8 +71,8 @@ export const HeaderLink = styled(NavLink)`
 export const AppMain = styled.main`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  margin-top:  80px ;
   flex: 1;
   padding: 40px;
-  min-height: calc(100vh - 120px);
 `

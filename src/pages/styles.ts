@@ -1,15 +1,17 @@
 import styled from "@emotion/styled"
+import { colors } from "styles/colors"
 
 export const PageWrapper = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  align-items: center;
-  padding: 50px;
+  align-items:center ;
+  justify-content: center;
   box-sizing: border-box;
   gap: 30px;
   overflow-y: auto;
   width: 100%;
+  padding: 10px;
 `
 export const SearchContainer = styled.div`
   display: flex;
@@ -44,12 +46,15 @@ export const ButtonContainer = styled.div`
   box-sizing: border-box;
 `
 
-export const WeatherNotFound = styled.p`
-  font-size: 30px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  margin-top: 40px;
+export const WeathersNotFound = styled.p`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: ${colors.WHITE};
+font-size: 36px;
 `
 
 export const SuccessModalWrapper = styled.div`
@@ -64,6 +69,7 @@ export const ModalInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30px;
   gap: 30px;
 `;
 
@@ -71,10 +77,5 @@ export const ModalInfo = styled.div`
   text-align: center;
   font-size: 40px;
   font-weight: bold;
-  color: purple;
-`;
-
-export const ModalIcon = styled.img`
-  width: 200px;
-  height: 200px;
+  color: white;
 `;

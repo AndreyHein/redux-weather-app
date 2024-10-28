@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { colors } from "styles/colors";
 
 export const ModalWrapper = styled.div`
   position: fixed;
@@ -10,17 +11,23 @@ export const ModalWrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  
 `;
 
 export const ModalComponent = styled.div`
-  display: flex;
+   display: flex;
   flex-direction: column;
-  border: 2px solid black;
-  width: 570px;
-  min-height: 400px;
-  max-height: 700px;
-  box-shadow: 1px 2px 10px black;
-  padding: 40px;
-  background-color: white;
-  overflow-y: auto;
+  justify-content: center;
+  align-items: center;
+  width: 710px;
+  height: 250px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  background: linear-gradient(
+    133.66deg,
+    rgba(47, 72, 111, 0.62) 5.78%,
+    rgba(11, 27, 52, 0.62) 96.58%
+  );
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
 `;

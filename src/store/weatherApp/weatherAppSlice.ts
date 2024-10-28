@@ -7,6 +7,7 @@ import { WeatherInitialState, WeatherData } from "./types"
 
 const weatherDataInitialState: WeatherInitialState = {
   inputValue: "",
+  messageModal: "",
   dataObj: undefined,
   data: [],
   error: undefined,
@@ -64,19 +65,23 @@ export const weatherSlice = createAppSlice({
       state.dataObj = undefined
       state.inputValue = ""
       state.isModalOpened = true
+      state.messageModal = "Your data has been saved successfully!!!"
     }),
     delError: create.reducer((state: WeatherInitialState) => {
       state.error = undefined
       state.isModalOpened = true
+      state.messageModal = "Your data has been successfully deleted !!!"
     }),
     delObjData: create.reducer((state: WeatherInitialState) => {
       state.dataObj = undefined
       state.isModalOpened = true
+      state.messageModal = "Your data has been successfully deleted !!!"
     }),
     delAllCard: create.reducer(() => {
       return {
         ...weatherDataInitialState,
         isModalOpened: true,
+        messageModal: "Your data has been successfully deleted !!!"
       }
     }),
     delCardById: create.reducer(
@@ -85,6 +90,7 @@ export const weatherSlice = createAppSlice({
           (card: WeatherData) => card.id !== action.payload,
         )
         state.isModalOpened = true
+        state.messageModal = "Your data has been successfully deleted !!!"
       },
     ),
     closeModal: create.reducer((state: WeatherInitialState) => {

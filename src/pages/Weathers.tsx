@@ -12,16 +12,15 @@ import {
   PageWrapper,
   CardContainer,
   ButtonContainer,
-  WeatherNotFound,
+  WeathersNotFound,
   SuccessModalWrapper,
   ModalInfoContainer,
   ModalInfo,
-  ModalIcon,
 } from "./styles"
 
 function Weathers() {
   const dispatch = useAppDispatch()
-  const { data, isModalOpened } = useAppSelector(weatherSliceSelectors.weathers)
+  const { data, isModalOpened,messageModal } = useAppSelector(weatherSliceSelectors.weathers)
 
   const closeModal = () => {
     dispatch(weatherSliceAction.closeModal())
@@ -53,14 +52,9 @@ function Weathers() {
         <Modal closeModal={closeModal}>
           <SuccessModalWrapper>
             <ModalInfoContainer>
-              <ModalInfo>Your data has been saved successfully!!!</ModalInfo>
-              <ModalIcon
-                className="modal-icon"
-                src="https://w7.pngwing.com/pngs/442/715/png-transparent-check-mark-computer-icons-icon-design-cheque-successful-angle-logo-grass-thumbnail.png"
-                alt="Success Icon"
-              />
+              <ModalInfo>{messageModal}</ModalInfo>
+              <Button name="Close Modal" onClick={closeModal} isCardButton/>
             </ModalInfoContainer>
-            <Button name="Close Modal" onClick={closeModal} />
           </SuccessModalWrapper>
         </Modal>
       )}
@@ -72,7 +66,7 @@ function Weathers() {
           </ButtonContainer>
         </>
       ) : (
-        <WeatherNotFound>Card not found</WeatherNotFound>
+        <WeathersNotFound>There are currently no saved cards</WeathersNotFound>
       )}
     </PageWrapper>
   )
