@@ -30,7 +30,7 @@ export const weatherSlice = createAppSlice({
         if (response.ok) {
           return result
         } else {
-          rejectWithValue(result)
+          return rejectWithValue(result.message)
         }
       },
       {
@@ -47,19 +47,25 @@ export const weatherSlice = createAppSlice({
             icon: action.payload.weather[0].icon,
           }
         },
-        rejected: (state: WeatherInitialState) => {
+        rejected: (state: WeatherInitialState, action) => {
           state.isLoading = false
-          state.error = "Some Network Error"
+          state.error = action.payload as string
         },
       },
     ),
     getCityName: create.reducer(
-        (state: WeatherInitialState, action: PayloadAction<string>) => {
-          state.inputValue = action.payload
-        },
-      ),
+      (state: WeatherInitialState, action: PayloadAction<string>) => {
+        state.inputValue = action.payload
+      },
+    ),
     saveWeatherData: create.reducer((state: WeatherInitialState) => {
       state.data = state.dataObj ? [...state.data, state.dataObj] : state.data
+    }),
+    delError: create.reducer((state: WeatherInitialState) => {
+      state.error = undefined
+    }),
+    delObjData: create.reducer((state: WeatherInitialState) => {
+      state.dataObj = undefined
     }),
     delAllCard: create.reducer(() => weatherDataInitialState),
     delCardById: create.reducer(

@@ -10,14 +10,8 @@ const App = () => {
   return (
     <Layout>
       <Routes>
-      <Route
-          path={WEATHER_APP_ROUTES.HOME}
-          element={<Home />}
-        />
-              <Route
-          path={WEATHER_APP_ROUTES.WEATHERS}
-          element={<Weathers />}
-        />
+        <Route path={WEATHER_APP_ROUTES.HOME} element={<Home />} />
+        <Route path={WEATHER_APP_ROUTES.WEATHERS} element={<Weathers />} />
       </Routes>
     </Layout>
   )
