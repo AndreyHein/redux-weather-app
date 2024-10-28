@@ -60,6 +60,8 @@ export const weatherSlice = createAppSlice({
     ),
     saveWeatherData: create.reducer((state: WeatherInitialState) => {
       state.data = state.dataObj ? [...state.data, state.dataObj] : state.data
+      state.dataObj = undefined
+      state.inputValue = ""
     }),
     delError: create.reducer((state: WeatherInitialState) => {
       state.error = undefined

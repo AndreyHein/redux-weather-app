@@ -10,6 +10,8 @@ export const PageWrapper = styled.div`
   padding: 20px;
   box-sizing: border-box;
   gap: 30px;
+  min-height: 200px;
+  max-height: calc(100vh - 90px);
 `
 export const SearchContainer = styled.div`
   display: flex;

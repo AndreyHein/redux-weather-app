@@ -15,9 +15,11 @@ export const LayoutWrapper = styled.div`
 `
 
 export const AppHeader = styled.header`
+position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  top:0;
   width: 100%;
   height: 80px;
   border-bottom: 1px solid #d2d2d2;
@@ -68,10 +70,11 @@ export const HeaderLink = styled(NavLink)`
 `
 
 export const AppMain = styled.main`
+  overflow-y: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
-  padding: 40px;
+  padding-top: 70px;
   min-height: calc(100vh - 120px);
 `
