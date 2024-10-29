@@ -13,7 +13,7 @@ import {
 } from "./styles"
 
 import { useAppDispatch, useAppSelector } from "store/hooks"
-import { ChangeEvent } from "react"
+import { ChangeEvent, useState } from "react"
 
 import Modal from "components/Modal/Modal"
 import Input from "components/Input/Input"
@@ -23,27 +23,29 @@ import {
   weatherSliceAction,
   weatherSliceSelectors,
 } from "store/weatherApp/weatherAppSlice"
-import { boolean } from "yup"
 
 function Home() {
+  const [cityName, setSityName] = useState<string>("")
+
   const appKey: string = "42f58ab4a7b3a4d34d19463542ce3b93"
 
   const dispatch = useAppDispatch()
-  const { inputValue, dataObj, error, isLoading, isModalOpened, messageModal } =
+  const { dataObj, error, isLoading, isModalOpened, messageModal } =
     useAppSelector(weatherSliceSelectors.weathers)
 
   const onChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
     console.log("Input value:", event.target.value)
-    dispatch(weatherSliceAction.getCityName(event.target.value))
+    // dispatch(weatherSliceAction.getCityName(event.target.value))
+    setSityName(event.target.value)
   }
 
   const getWeatherData = () => {
-    if (!inputValue.trim()) {
+    if (!cityName.trim()) {
       alert("Please enter a city name")
       return
     }
     dispatch(
-      weatherSliceAction.getWeatherData({ cityName: inputValue, appKey }),
+      weatherSliceAction.getWeatherData({ cityName: cityName, appKey }),
     )
   }
 
@@ -79,7 +81,7 @@ function Home() {
       <SearchContainer>
         <InputContainer>
           <Input
-            value={inputValue}
+            value={cityName}
             onChange={onChangeValue}
             id="city_id"
             name="city"
@@ -89,7 +91,7 @@ function Home() {
         </InputContainer>
         <SearchButtonContainer>
           <Button
-            type="submit"
+            type="button"
             name="Search"
             onClick={getWeatherData}
             disabled={isLoading}

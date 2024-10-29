@@ -6,13 +6,12 @@ import { PayloadAction } from "@reduxjs/toolkit"
 import { WeatherInitialState, WeatherData } from "./types"
 
 const weatherDataInitialState: WeatherInitialState = {
-  inputValue: "",
-  messageModal: "",
+  messageModal: "", // либо хранить локально, либо отдельный Slice
   dataObj: undefined,
   data: [],
   error: undefined,
   isLoading: false,
-  isModalOpened: false,
+  isModalOpened: false, // либо хранить локально, либо отдельный Slice
 }
 
 export const weatherSlice = createAppSlice({
@@ -24,7 +23,7 @@ export const weatherSlice = createAppSlice({
         { cityName, appKey }: { cityName: string; appKey: string },
         { rejectWithValue },
       ) => {
-        const WEATHER_API_URL: string = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${appKey}`
+        const WEATHER_API_URL: string = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${appKey}` // можно хранить тут appKey
         const response = await fetch(WEATHER_API_URL)
         const result = await response.json()
 
@@ -36,6 +35,7 @@ export const weatherSlice = createAppSlice({
       },
       {
         pending: (state: WeatherInitialState) => {
+          state.dataObj = undefined
           state.error = undefined
           state.isLoading = true
         },
@@ -47,7 +47,6 @@ export const weatherSlice = createAppSlice({
             temp: action.payload.main["temp"],
             icon: action.payload.weather[0].icon,
           }
-          state.inputValue = ""
         },
         rejected: (state: WeatherInitialState, action) => {
           state.isLoading = false
@@ -55,15 +54,10 @@ export const weatherSlice = createAppSlice({
         },
       },
     ),
-    getCityName: create.reducer(
-      (state: WeatherInitialState, action: PayloadAction<string>) => {
-        state.inputValue = action.payload
-      },
-    ),
+
     saveWeatherData: create.reducer((state: WeatherInitialState) => {
       state.data = state.dataObj ? [...state.data, state.dataObj] : state.data
       state.dataObj = undefined
-      state.inputValue = ""
       state.isModalOpened = true
       state.messageModal = "Your data has been saved successfully!!!"
     }),
@@ -81,7 +75,7 @@ export const weatherSlice = createAppSlice({
       return {
         ...weatherDataInitialState,
         isModalOpened: true,
-        messageModal: "Your data has been successfully deleted !!!"
+        messageModal: "Your data has been successfully deleted !!!",
       }
     }),
     delCardById: create.reducer(

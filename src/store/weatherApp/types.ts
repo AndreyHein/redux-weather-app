@@ -12,7 +12,6 @@ export interface WeatherData {
 }
 
 export interface WeatherInitialState {
-  inputValue: string
   messageModal: string
   dataObj: WeatherData | undefined
   data: WeatherData[]

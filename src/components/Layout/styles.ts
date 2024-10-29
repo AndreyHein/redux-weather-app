@@ -15,6 +15,8 @@ export const LayoutWrapper = styled.div`
 `
 
 export const AppHeader = styled.header`
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,8 +34,8 @@ export const AppHeader = styled.header`
       rgba(18, 45, 77, 0.5)
     ),
     linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
-    
-    &:hover {
+
+  &:hover {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
   }
 `
@@ -44,7 +46,6 @@ export const AppTitle = styled.span`
   margin-left: 85px;
   color: ${colors.WHITE};
   cursor: pointer;
-  
 `
 
 export const HeaderNav = styled.nav`
@@ -72,7 +73,9 @@ export const AppMain = styled.main`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin-top:  80px ;
+  margin-top: 80px;
   flex: 1;
   padding: 40px;
+  padding-top: 70px;
+  height: calc(100vh - 80px);
 `

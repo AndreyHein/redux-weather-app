@@ -58,7 +58,7 @@ function Weathers() {
           </SuccessModalWrapper>
         </Modal>
       )}
-      {data.length > 0 && isModalOpened !==true ? (
+      {data.length > 0 ? (
         <>
           {weatherCards}
           <ButtonContainer>
