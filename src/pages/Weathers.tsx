@@ -20,7 +20,9 @@ import {
 
 function Weathers() {
   const dispatch = useAppDispatch()
-  const { data, isModalOpened,messageModal } = useAppSelector(weatherSliceSelectors.weathers)
+  const { data, isModalOpened, messageModal } = useAppSelector(
+    weatherSliceSelectors.weathers,
+  )
 
   const closeModal = () => {
     dispatch(weatherSliceAction.closeModal())
@@ -48,17 +50,7 @@ function Weathers() {
 
   return (
     <PageWrapper>
-      {isModalOpened && (
-        <Modal closeModal={closeModal}>
-          <SuccessModalWrapper>
-            <ModalInfoContainer>
-              <ModalInfo>{messageModal}</ModalInfo>
-              <Button name="Close Modal" onClick={closeModal} isCardButton/>
-            </ModalInfoContainer>
-          </SuccessModalWrapper>
-        </Modal>
-      )}
-      {data.length > 0 ? (
+      {data.length > 0 && !isModalOpened ? (
         <>
           {weatherCards}
           <ButtonContainer>
@@ -66,7 +58,21 @@ function Weathers() {
           </ButtonContainer>
         </>
       ) : (
-        <WeathersNotFound>There are currently no saved cards</WeathersNotFound>
+        !isModalOpened && (
+          <WeathersNotFound>
+            There are currently no saved cards
+          </WeathersNotFound>
+        )
+      )}
+      {isModalOpened && (
+        <Modal closeModal={closeModal}>
+          <SuccessModalWrapper>
+            <ModalInfoContainer>
+              <ModalInfo>{messageModal}</ModalInfo>
+              <Button name="Close Modal" onClick={closeModal} isCardButton />
+            </ModalInfoContainer>
+          </SuccessModalWrapper>
+        </Modal>
       )}
     </PageWrapper>
   )

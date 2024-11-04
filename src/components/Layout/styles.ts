@@ -12,6 +12,7 @@ export const LayoutWrapper = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 `
 
 export const AppHeader = styled.header`
@@ -76,6 +77,4 @@ export const AppMain = styled.main`
   margin-top: 80px;
   flex: 1;
   padding: 40px;
-  padding-top: 70px;
-  height: calc(100vh - 80px);
 `

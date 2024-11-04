@@ -6,7 +6,6 @@ import {
   CardContainer,
   SearchButtonContainer,
   InputContainer,
-  WeathersNotFound,
   SuccessModalWrapper,
   ModalInfoContainer,
   ModalInfo,
@@ -34,8 +33,6 @@ function Home() {
     useAppSelector(weatherSliceSelectors.weathers)
 
   const onChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log("Input value:", event.target.value)
-    // dispatch(weatherSliceAction.getCityName(event.target.value))
     setSityName(event.target.value)
   }
 
@@ -45,8 +42,9 @@ function Home() {
       return
     }
     dispatch(
-      weatherSliceAction.getWeatherData({ cityName: cityName, appKey }),
+      weatherSliceAction.getWeatherData({ cityName: cityName, appKey })
     )
+    setSityName("")
   }
 
   const closeModal = () => {
